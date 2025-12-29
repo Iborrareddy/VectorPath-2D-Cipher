@@ -1,46 +1,56 @@
 # VectorPath 2D Cipher 🚀🔐
 
-**VectorPath 2D Cipher** is a next-generation web-based encoding tool. It utilizes a **Fixed-Width 2-Digit Protocol** to transform text into a structured numeric pattern. Unlike standard ciphers, it preserves document layout (spaces, tabs, and newlines) while ensuring every character has a unique, reversible signature.
+**VectorPath 2D Cipher** is a web-based 2D encoding and decoding tool that uses a bulletproof fixed-width 2-digit protocol to securely transform text. The tool allows users to encode plain text into a custom numeric pattern and decode it back to readable text.
 
 ---
 
 ### 🌐 Live Demo
-Experience the tool here:  
+The project is hosted on GitHub Pages:  
 [https://Iborrareddy.github.io/VectorPath-2D-Cipher/](https://Iborrareddy.github.io/VectorPath-2D-Cipher/)
 
 ---
 
 ### ✨ Features
-- **Binary-Visual Hybrid**: Uses numerical sequences that vary in length based on character position.
-- **Fixed-Width Logic**: Numbers (30+) and Symbols (99-) use 2-digit pairs to prevent decoding ambiguity.
-- **Layout Preservation**: Full support for `\n`, `\t`, and multiple spaces.
-- **Cyberpunk UI**: Glassmorphism design with a high-contrast terminal aesthetic.
-- **Secure Handling**: Client-side processing ensures your data never leaves the browser.
+- 🔢 Encode text into a 2D fixed-width numeric pattern.  
+- 🔄 Decode numeric patterns back into the original text.  
+- 🅰️ Supports:
+  - Uppercase and lowercase letters  
+  - Numbers  
+  - Common symbols  
+  - Spaces, tabs, and newlines  
+- 💻 Interactive web interface with real-time encoding/decoding.  
+- 📋 Copy output with a single click.  
+- 🧹 Clear input/output easily with a button.  
+- 📱 Responsive design for mobile and desktop.  
 
 ---
 
-### 🛠 The Protocol (How It Works)
+### 🛠 How It Works
 
+**Encoding Logic:**
+- 🔺 Letters A-M are converted using a sequential increment pattern.  
+- 🔻 Letters N-Z are converted using a decrement pattern.  
+- 🔢 Numbers are mapped to a fixed numeric sequence.  
+- ⚙️ Symbols are mapped to a custom numeric range.  
+- ⬜ Spaces, tabs, and newlines have specific 2-digit codes.  
 
-
-**Encoding Strategy:**
-- **Ascending Path**: Letters **A-M** increment sequentially (e.g., `B` -> `12`).
-- **Descending Path**: Letters **N-Z** decrement sequentially (e.g., `O` -> `98`).
-- **Numeric Shift**: Digits **0-9** are mapped to pairs starting at `30` (e.g., `1` -> `3031`).
-- **Extended Symbols**: Mapped to a stable descending range starting at `99`.
-- **Case Sensitivity**: Lowercase characters are identified by a unique `0` prefix.
+**Decoding Logic:**
+- 🔄 The numeric patterns are parsed and converted back to their original characters.  
+- ✅ Handles lowercase/uppercase, numbers, symbols, and whitespace correctly.  
+- ❓ Invalid patterns are detected and returned as `?`.  
 
 ---
 
 ### 📖 How to Use
-1. **Input**: Type or paste your text into the **Input Stream**.
-2. **Transform**: Click **Encode Data** to see the VectorPath pattern.
-3. **Revert**: Paste a piped pattern into the stream and click **Decode Stream**.
-4. **Export**: Use the **Copy** or **Download** buttons to save your results.
+1. 📝 Input your text in the "Input Stream" text area.  
+2. 🟢 Click **Encode Data** to generate the numeric pattern.  
+3. 🔵 Click **Decode Stream** to convert a numeric pattern back to text.  
+4. 🧹 Click **Clear All** to reset the input and output.  
+5. 📋 Click **Copy** to copy the output to your clipboard.  
 
 ---
 
-### 💾 Local Development
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/Iborrareddy/VectorPath-2D-Cipher.git](https://github.com/Iborrareddy/VectorPath-2D-Cipher.git)
+### 💾 Installation (Optional)
+If you want to run locally:  
+```bash
+git clone https://github.com/Iborrareddy/VectorPath-2D-Cipher.git
