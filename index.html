@@ -1,203 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VectorPath 2D Cipher</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
-<style>
-:root {
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --secondary: #10b981;
-    --accent: #f43f5e;
-    --bg: #0b0f1a;
-    --card-bg: rgba(24,28,40,0.85);
-    --card-glass: rgba(255,255,255,0.05);
-    --border: rgba(255,255,255,0.1);
-    --text-main: #f8fafc;
-    --text-dim: #94a3b8;
-    --terminal-green: #22c55e;
-    --terminal-blue: #38bdf8;
-    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VectorPath 2D Cipher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary: #10b981;
+            --accent: #f43f5e;
+            --bg: #0b0f1a;
+            --card-bg: rgba(24, 28, 40, 0.9);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --terminal-green: #22c55e;
+            --terminal-blue: #38bdf8;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg,#0b0f1a,#1a1f2e);
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.container {
-    width: 100%;
-    max-width: 900px;
-    background: var(--card-bg);
-    backdrop-filter: blur(15px);
-    border-radius: 28px;
-    padding: 40px;
-    border: 1px solid var(--border);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition);
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top right, #1e293b, #0b0f1a);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
 
-.container::before {
-    content:'';
-    position:absolute;
-    top:-50px;
-    left:-50px;
-    width:180px;
-    height:180px;
-    background:var(--primary);
-    filter: blur(120px);
-    opacity:0.15;
-    z-index:0;
-}
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            position: relative;
+        }
 
-header { position: relative; z-index:1; margin-bottom:32px; text-align:center; }
-h1 {
-    font-size:36px;
-    font-weight:800;
-    letter-spacing:-0.5px;
-    background:linear-gradient(to right,#818cf8,#c084fc);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-.subtitle {
-    color: var(--text-dim);
-    font-size:13px;
-    margin-top:6px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-}
+        header { text-align: center; margin-bottom: 32px; }
+        h1 { font-size: 36px; font-weight: 800; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: var(--text-dim); font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin-top: 8px; }
 
-.editor-section { position: relative; z-index:1; margin-bottom:24px; }
-label {
-    display:block;
-    font-size:12px;
-    font-weight:600;
-    color:var(--text-dim);
-    text-transform:uppercase;
-    margin-bottom:8px;
-    letter-spacing:1px;
-}
-textarea {
-    width:100%;
-    height:160px;
-    background: rgba(24,28,40,0.9);
-    border-radius:18px;
-    border: 1px solid var(--border);
-    padding:20px;
-    color:var(--terminal-blue);
-    font-family:'Fira Code','Courier New',monospace;
-    font-size:16px;
-    line-height:1.6;
-    resize:none;
-    transition: all 0.3s ease;
-}
-textarea:focus {
-    outline:none;
-    border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(99,102,241,0.3);
-    background: rgba(24,28,40,1);
-}
+        textarea {
+            width: 100%;
+            height: 160px;
+            background: rgba(10, 14, 23, 0.8);
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            color: var(--terminal-blue);
+            font-family: 'Fira Code', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: none;
+            transition: var(--transition);
+        }
 
-.btn-group { display:flex; gap:16px; margin-bottom:16px; }
-button {
-    flex:1;
-    padding:16px 20px;
-    border:none;
-    border-radius:14px;
-    font-weight:600;
-    font-size:15px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    transition: all 0.3s ease;
-}
-.btn-encode {
-    background: var(--primary);
-    color: #fff;
-    box-shadow: 0 6px 15px rgba(99,102,241,0.3);
-}
-.btn-encode:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(99,102,241,0.4);
-}
-.btn-decode {
-    background: rgba(16,185,129,0.1);
-    color: var(--secondary);
-    border:2px solid var(--secondary);
-}
-.btn-decode:hover {
-    background: rgba(16,185,129,0.2);
-    transform: translateY(-2px);
-}
-.btn-clear {
-    background: var(--accent);
-    color: #fff;
-}
-.btn-clear:hover {
-    filter: brightness(1.1);
-}
+        textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); }
 
-.output-section {
-    background: rgba(24,28,40,0.95);
-    border-radius:18px;
-    border: 1px solid var(--border);
-    padding:24px;
-    position: relative;
-    backdrop-filter: blur(5px);
-}
-.output-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
-.copy-btn {
-    background: var(--border);
-    color: var(--text-main);
-    padding:6px 14px;
-    border-radius:10px;
-    font-size:12px;
-    font-weight:600;
-    border:none;
-    cursor:pointer;
-    transition: background 0.2s;
-}
-.copy-btn:hover { background: rgba(255,255,255,0.15); }
+        .btn-group { display: flex; gap: 12px; margin: 24px 0; }
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        .btn-encode { background: var(--primary); color: white; }
+        .btn-decode { background: rgba(16, 185, 129, 0.1); color: var(--secondary); border: 1px solid var(--secondary); }
+        .btn-clear { background: var(--accent); color: white; }
+        button:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-.result-display {
-    font-family:'Fira Code', monospace;
-    color: var(--terminal-green);
-    word-break: break-all;
-    min-height:60px;
-    font-size:16px;
-    line-height:1.8;
-    white-space: pre-wrap;
-}
-@media (max-width:600px) {
-    .container { padding:24px; }
-    .btn-group { flex-direction:column; }
-}
-</style>
+        .output-section {
+            background: rgba(10, 14, 23, 0.8);
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            position: relative;
+        }
+
+        .output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .action-btns { display: flex; gap: 8px; }
+        .util-btn { background: var(--border); color: white; border: none; padding: 6px 12px; border-radius: 8px; font-size: 11px; cursor: pointer; }
+        .util-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .result-display {
+            font-family: 'Fira Code', monospace;
+            color: var(--terminal-green);
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 60px;
+            line-height: 1.6;
+        }
+
+        footer { text-align: center; color: var(--text-dim); font-size: 14px; }
+        footer a { color: var(--primary); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; }
+        footer img { width: 20px; filter: invert(1); }
+    </style>
 </head>
 <body>
+
 <div class="container">
     <header>
         <h1>VectorPath 2D Cipher</h1>
-        <p class="subtitle">Bulletproof Fixed-Width 2-Digit Protocol</p>
+        <p class="subtitle">Secure Fixed-Width Pattern Protocol</p>
     </header>
 
     <div class="editor-section">
-        <label>Input Stream</label>
-        <textarea id="mainInput" placeholder="Enter text to encode OR pattern strings (1 | 012) to decode..."></textarea>
+        <label style="display:block; margin-bottom:8px; font-size:11px; color:var(--text-dim); text-transform:uppercase;">Input Stream</label>
+        <textarea id="mainInput" placeholder="Enter message or pattern..."></textarea>
     </div>
 
     <div class="btn-group">
@@ -208,111 +132,129 @@ button {
 
     <div class="output-section">
         <div class="output-header">
-            <label style="margin:0;">Processed Output</label>
-            <button class="copy-btn" onclick="copyText()">Copy</button>
+            <label style="font-size:11px; color:var(--text-dim); text-transform:uppercase;">Processed Output</label>
+            <div class="action-btns">
+                <button class="util-btn" onclick="copyText()">Copy</button>
+                <button class="util-btn" onclick="downloadText()">Download</button>
+            </div>
         </div>
         <div id="mainOutput" class="result-display">Waiting for data...</div>
     </div>
 </div>
+
+<footer>
+    <p>&copy; 2025 Madhan Mohan | MIT License</p>
+    <a href="https://github.com/Iborrareddy/VectorPath-2D-Cipher" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub">
+        View Project on GitHub
+    </a>
+</footer>
+
 
 <script>
 const AM = "ABCDEFGHIJKLM";
 const NZ = "NOPQRSTUVWXYZ";
 const SYMBOLS = `~!@#$%^&*()-_=+[]{}|;:'\",.<>/?¡¢£¤¥§©®™µ¶•∞±÷×≤≥`;
 
-// Encode single character
-function encodeChar(char){
-    if(char === " ") return "10";       
-    if(char === "\n") return "11";      
-    if(char === "\t") return "12";      
+function encodeChar(char) {
+    if (char === " ") return "10";
+    if (char === "\n") return "11";
+    if (char === "\t") return "12";
 
-    const isLower = char===char.toLowerCase() && char!==char.toUpperCase();
+    const isLower = char === char.toLowerCase() && char !== char.toUpperCase();
     const upper = char.toUpperCase();
-    const prefix = isLower?"0":"";
+    const prefix = isLower ? "0" : "";
 
-    if(AM.includes(upper)){
-        let pos = AM.indexOf(upper)+1;
+    if (AM.includes(upper)) {
+        let pos = AM.indexOf(upper) + 1;
         let out = "";
-        for(let i=1;i<=pos;i++) out += i%10;
-        return prefix+out;
+        for (let i = 1; i <= pos; i++) out += i % 10;
+        return prefix + out;
     }
-    if(NZ.includes(upper)){
-        let pos = NZ.indexOf(upper)+1;
+    if (NZ.includes(upper)) {
+        let pos = NZ.indexOf(upper) + 1;
         let out = "";
-        for(let i=0;i<pos;i++) out += 9-(i%10);
-        return prefix+out;
+        for (let i = 0; i < pos; i++) out += 9 - (i % 10);
+        return prefix + out;
     }
-    if(/[0-9]/.test(char)){
+    if (/[0-9]/.test(char)) {
         let val = parseInt(char);
-        let out="";
-        for(let i=0;i<=val;i++) out += String(30+i).padStart(2,"0");
+        let out = "";
+        for (let i = 0; i <= val; i++) out += String(30 + i).padStart(2, "0");
         return out;
     }
-    if(SYMBOLS.includes(char)){
-        let pos = SYMBOLS.indexOf(char)+1;
-        let out="";
-        for(let i=0;i<pos;i++) out += String(99-i).padStart(2,"0");
+    if (SYMBOLS.includes(char)) {
+        let pos = SYMBOLS.indexOf(char) + 1;
+        let out = "";
+        for (let i = 0; i < pos; i++) out += String(99 - i).padStart(2, "0");
         return out;
     }
     return char;
 }
 
-// Decode single token
-function decodeToken(token){
-    const clean=token.trim();
-    if(!clean) return "";
-
-    if(clean==="10") return " ";   
-    if(clean==="11") return "\n";  
-    if(clean==="12") return "\t";  
+function decodeToken(token) {
+    const clean = token.trim();
+    if (!clean) return "";
+    if (clean === "10") return " ";
+    if (clean === "11") return "\n";
+    if (clean === "12") return "\t";
 
     const isLower = clean.startsWith("0") && !clean.startsWith("00");
     const content = isLower ? clean.substring(1) : clean;
 
-    if(content.startsWith("30")) return String(Math.floor(content.length/2)-1);
-    if(content.startsWith("99")) return SYMBOLS[Math.floor(content.length/2)-1]||"?";
-    if(content.startsWith("1")) return isLower ? AM[content.length-1].toLowerCase() : (AM[content.length-1]||"?");
-    if(content.startsWith("9")) return isLower ? NZ[content.length-1].toLowerCase() : (NZ[content.length-1]||"?");
+    if (content.startsWith("30")) return String(Math.floor(content.length / 2) - 1);
+    if (content.startsWith("99")) return SYMBOLS[Math.floor(content.length / 2) - 1] || "?";
+    
+    // Safety check for Letter Decoding
+    const idx = content.length - 1;
+    if (content.startsWith("1")) {
+        const char = AM[idx];
+        return char ? (isLower ? char.toLowerCase() : char) : "?";
+    }
+    if (content.startsWith("9")) {
+        const char = NZ[idx];
+        return char ? (isLower ? char.toLowerCase() : char) : "?";
+    }
 
     return "?";
 }
 
-// Process input
-function process(isEncoding){
-    const input=document.getElementById('mainInput').value;
-    const output=document.getElementById('mainOutput');
-    if(!input.trim()){
-        output.innerText="Error: Input terminal empty.";
+function process(isEncoding) {
+    const input = document.getElementById('mainInput').value;
+    const output = document.getElementById('mainOutput');
+    if (!input.trim()) {
+        output.innerText = "Error: Input terminal empty.";
         return;
     }
-    try{
-        if(isEncoding){
-            const res=input.split('').map(encodeChar).join(' | ');
-            output.innerText=res;
-        }else{
-            const tokens=input.split(/\s*\|\s*/);
-            const res=tokens.map(decodeToken).join('');
-            output.innerText=res;
-        }
-    }catch(e){
-        output.innerText="Error: Invalid pattern detected.";
+
+    if (isEncoding) {
+        output.innerText = input.split('').map(encodeChar).join(' | ');
+    } else {
+        output.innerText = input.split(/\s*\|\s*/).map(decodeToken).join('');
     }
 }
 
-// Copy output
-function copyText(){
-    const text=document.getElementById('mainOutput').innerText;
-    navigator.clipboard.writeText(text).then(()=>{
-        const btn=document.querySelector('.copy-btn');
-        btn.innerText="Copied!";
-        setTimeout(()=>btn.innerText="Copy",2000);
+function copyText() {
+    const text = document.getElementById('mainOutput').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.util-btn');
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 2000);
     });
 }
 
-// Clear input/output
-function clearAll(){
-    document.getElementById('mainInput').value="";
-    document.getElementById('mainOutput').innerText="Waiting for data...";
+function downloadText() {
+    const text = document.getElementById('mainOutput').innerText;
+    const blob = new Blob([text], { type: 'text/plain' });
+    const anchor = document.createElement('a');
+    anchor.download = "vectorpath_output.txt";
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.click();
+}
+
+function clearAll() {
+    document.getElementById('mainInput').value = "";
+    document.getElementById('mainOutput').innerText = "Waiting for data...";
 }
 </script>
 </body>
