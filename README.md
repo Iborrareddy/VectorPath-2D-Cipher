@@ -4,6 +4,13 @@
 
 ---
 
+## 🔹 Live Demo
+
+The project is hosted on **GitHub Pages**:  
+[https://Iborrareddy.github.io/VectorPath-2D-Cipher/](https://Iborrareddy.github.io/VectorPath-2D-Cipher/)
+
+---
+
 ## 🔹 Features
 
 - **Encode text** into a 2D fixed-width numeric pattern.
@@ -43,13 +50,6 @@
 3. Click **Decode Stream** to convert a numeric pattern back to text.
 4. Click **Clear All** to reset the input and output.
 5. Click **Copy** to copy the output to your clipboard.
-
----
-
-## 🔹 Live Demo
-
-The project is hosted on **GitHub Pages**:  
-[https://Iborrareddy.github.io/VectorPath-2D-Cipher/](https://Iborrareddy.github.io/VectorPath-2D-Cipher/)
 
 ---
 
